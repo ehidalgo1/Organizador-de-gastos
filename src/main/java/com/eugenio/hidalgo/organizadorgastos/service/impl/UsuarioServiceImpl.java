@@ -22,9 +22,8 @@ public class UsuarioServiceImpl implements IUsuarioService {
     }
 
     @Override
-    public Usuario getUser(int rut, char dv) {
-        return this.usuarioDAO.findByRut(rut,dv);
+    public Usuario getUserById(int idUsuario) {
+        return this.usuarioDAO.findById(idUsuario).orElse(null);
     }
-
 
 }

@@ -1,32 +1,33 @@
 package com.eugenio.hidalgo.organizadorgastos.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Usuario {
 
     @Id
-    private int rut;
-    private char dv;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "ID_USUARIO")
+    private int idUsuario;
+    private String rut;
     private String nombre;
     private String apellido;
     private String email;
 
-    public int getRut() {
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public String getRut() {
         return rut;
     }
 
-    public void setRut(int rut) {
+    public void setRut(String rut) {
         this.rut = rut;
-    }
-
-    public char getDv() {
-        return dv;
-    }
-
-    public void setDv(char dv) {
-        this.dv = dv;
     }
 
     public String getNombre() {

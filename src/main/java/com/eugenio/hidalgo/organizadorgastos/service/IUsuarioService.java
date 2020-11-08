@@ -8,6 +8,6 @@ public interface IUsuarioService {
 
     public List<Usuario> getAllUser();
 
-    public  Usuario getUser(int rut, char dv);
+    public  Usuario getUserById(int idUsuario);
 
 }
