@@ -6,12 +6,10 @@ import com.eugenio.hidalgo.organizadorgastos.service.IUsuarioService;
 import com.eugenio.hidalgo.organizadorgastos.service.impl.MessageErrorServiceImpl;
 import com.eugenio.hidalgo.organizadorgastos.util.MessageError;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,8 +44,8 @@ public class UsuarioController {
 
             try{
                 usuario = this.iUsuarioService.getUserById(idUsuario);
-            }catch (Exception e){
-                e.printStackTrace();
+            }catch (DataAccessException e){
+                return new ResponseEntity<DataAccessException>(e,HttpStatus.INTERNAL_SERVER_ERROR);
             }
 
             if (usuario!=null){
@@ -56,11 +54,26 @@ public class UsuarioController {
                 MessageError msgError = this.iMessageErrorService.userNotFound();
                 return new ResponseEntity<MessageError>(msgError, HttpStatus.OK);
             }
-        }catch (Exception e){
 
+        }catch (Exception e){
             return new ResponseEntity<Exception>(e,HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
 
+    @PostMapping("/")
+    public ResponseEntity<?> createUser(@RequestBody Usuario usuario){
+
+        try {
+            if(usuario!=null){
+
+
+
+                return new ResponseEntity<Usuario>(usuario,HttpStatus.OK);
+            }else {
+                MessageError msgError = this.iMessageErrorService.userNotCreated();
+                return new ResponseEntity<MessageError>(msgError,HttpStatus.BAD_REQUEST);
+            }
+        }catch ()
 
     }
 

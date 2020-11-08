@@ -16,14 +16,51 @@ public class UsuarioServiceImpl implements IUsuarioService {
     @Autowired
     private IUsuarioDAO usuarioDAO;
 
+    /**
+     *
+     * @return Método que obtiene todos los usuarios
+     */
     @Override
     public List<Usuario> getAllUser() {
         return (List<Usuario>) this.usuarioDAO.findAll();
     }
 
+    /**
+     *
+     * @param idUsuario
+     * @return Método que obtiene un usuario por id
+     */
     @Override
     public Usuario getUserById(int idUsuario) {
         return this.usuarioDAO.findById(idUsuario).orElse(null);
+    }
+
+    /**
+     *
+     * @param usuario
+     * @return Método que guarda un usuario
+     */
+    @Override
+    public Usuario save(Usuario usuario) {
+        return null;
+    }
+
+    /**
+     *
+     * @param usuario
+     */
+    @Override
+    public void delete(Usuario usuario) {
+
+    }
+
+    /**
+     * 
+     * @param id
+     */
+    @Override
+    public void deleteById(int id) {
+
     }
 
 }

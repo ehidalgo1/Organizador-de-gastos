@@ -14,6 +14,10 @@ public class MessageErrorServiceImpl implements IMessageErrorService {
 
     Constantes constantes;
 
+    /**
+     *
+     * @return Método que retorna mensaje cuando no se pudo encuentrar el usuario
+     */
     @Override
     public MessageError userNotFound() {
         constantes = new Constantes();
@@ -21,6 +25,20 @@ public class MessageErrorServiceImpl implements IMessageErrorService {
         msgError.getTimestamp();
         msgError.setStatus(404);
         msgError.setError(constantes.USER_NOT_FOUND);
+
+        return msgError;
+    }
+
+    /**
+     *
+     * @return Método que retorna mensaje cuando no se pudo crear el usuario
+     */
+    @Override
+    public MessageError userNotCreated() {
+        MessageError msgError = new MessageError();
+        msgError.getTimestamp();
+        msgError.setStatus(400);
+        msgError.setError(constantes.USER_NOT_CREATED);
 
         return msgError;
     }

@@ -10,4 +10,10 @@ public interface IUsuarioService {
 
     public  Usuario getUserById(int idUsuario);
 
+    public Usuario save(Usuario usuario);
+
+    public void delete(Usuario usuario);
+
+    public void deleteById(int id);
+
 }

@@ -6,4 +6,6 @@ public interface IMessageErrorService {
 
     public MessageError userNotFound();
 
+    public MessageError userNotCreated();
+
 }
